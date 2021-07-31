@@ -11,14 +11,16 @@ const mongoose = require('mongoose')
 const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
+const methodOverride = require('method-override')
 
 
 app.set('view engine','ejs')
 app.set('views',__dirname+'/views')
 app.set('layout','layouts/layout')
 app.use(expressLayouts)
+app.use(methodOverride('_method'))
 app.use(express.static('public'))
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({limit:'50mb',extended:false}))
 
 
 mongoose.connect(process.env.DATABASE_URL,{
