@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index')
 const authorRouter = require('./routes/authors')
 const bookRouter = require('./routes/books')
 const methodOverride = require('method-override')
+const notFound = require('./routes/404page')
 
 
 app.set('view engine','ejs')
@@ -38,6 +39,7 @@ db.once('open',()=>console.log('Connected to Mongoose'))
 app.use('/',indexRouter)
 app.use('/authors',authorRouter)
 app.use('/books', bookRouter)
+app.use(notFound)
 
 
 app.listen(process.env.PORT || 3000)

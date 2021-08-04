@@ -57,6 +57,7 @@ router.get('/:id', async (req,res)=>{
             booksByAuthor: books
         })
     } catch (error) {
+       
         
         res.redirect('/')
     }
